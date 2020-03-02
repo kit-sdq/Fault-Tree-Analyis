@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated faulttree -->
+      <package
+            uri="http://www.fzi.de/fta/faultTree"
+            class="de.fzi.fta.faultTree.FaultTreePackage"
+            genModel="model/FaultTree.genmodel"/>
+   </extension>
+
+</plugin>

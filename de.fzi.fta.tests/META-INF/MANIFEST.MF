@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: de.fzi.fta.tests
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: de.fzi.fta.tests
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: de.fzi.fta.analysis;bundle-version="1.0.0",
+ de.fzi.fta.cutSet;bundle-version="0.1.0",
+ de.fzi.fta.faultTree;bundle-version="0.1.0",
+ org.junit

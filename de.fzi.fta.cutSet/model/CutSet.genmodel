@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.fzi.fta.cutSet/src-gen" modelPluginID="de.fzi.fta.cutSet"
+    modelName="CutSet" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>CutSet.ecore</foreignModel>
+  <genPackages prefix="CutSet" basePackage="de.fzi.fta" disposableProviderFactory="true"
+      ecorePackage="CutSet.ecore#/">
+    <genClasses ecoreClass="CutSet.ecore#//CutSet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CutSet.ecore#//CutSet/isMinimal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CutSet.ecore#//CutSet/cuts"/>
+      <genOperations ecoreOperation="CutSet.ecore#//CutSet/calculateProbabilityConservatively"
+          body="double result = 1;&#xD;&#xA;double counterProbability = 1;&#xD;&#xA;for (Cut c : cuts) {&#xD;&#xA;&#x9;double cutProbability = 1;&#xD;&#xA;&#x9;for (de.fzi.fta.cutSet.Event e : c.getEvents()) {&#xD;&#xA;&#x9;&#x9;cutProbability *= e.getProbability();&#xD;&#xA;&#x9;}&#x9;&#xD;&#xA;&#x9;counterProbability *= (1 - cutProbability);&#xD;&#xA;}&#xD;&#xA;result -= counterProbability;&#xD;&#xA;return result;"/>
+      <genOperations ecoreOperation="CutSet.ecore#//CutSet/calculateProbabilityConservatively.1"
+          body="double result = 1;&#xD;&#xA;double counterProbability = 1;&#xD;&#xA;for (Cut c : cuts) {&#xD;&#xA;&#x9;double cutProbability = 1;&#xD;&#xA;&#x9;for (de.fzi.fta.cutSet.Event e : c.getEvents()) {&#xD;&#xA;&#x9;&#x9;double eventProbability = e.getProbability();&#xD;&#xA;&#x9;&#x9;if (occuringEvents != null) {&#xD;&#xA;&#x9;&#x9;&#x9;eventProbability = occuringEvents.parallelStream().filter(o -> o.equals(e.getName())).findFirst().isPresent() ? 1 : eventProbability;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (notOccuringEvents != null) {&#xD;&#xA;&#x9;&#x9;&#x9;eventProbability = notOccuringEvents.parallelStream().filter(n -> n.equals(e.getName())).findFirst().isPresent() ? 0 : eventProbability;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;cutProbability *= eventProbability;&#xD;&#xA;&#x9;}&#x9;&#xD;&#xA;&#x9;counterProbability *= (1 - cutProbability);&#xD;&#xA;}&#xD;&#xA;result -= counterProbability;&#xD;&#xA;return result;">
+        <genParameters ecoreParameter="CutSet.ecore#//CutSet/calculateProbabilityConservatively.1/occuringEvents"/>
+        <genParameters ecoreParameter="CutSet.ecore#//CutSet/calculateProbabilityConservatively.1/notOccuringEvents"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="CutSet.ecore#//Cut">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CutSet.ecore#//Cut/events"/>
+    </genClasses>
+    <genClasses ecoreClass="CutSet.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CutSet.ecore#//Event/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CutSet.ecore#//Event/probability"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

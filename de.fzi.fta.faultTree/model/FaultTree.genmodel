@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.fzi.fta.faultTree/src" modelPluginID="de.fzi.fta.faultTree"
+    modelName="FaultTree" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>FaultTree.ecore</foreignModel>
+  <genPackages prefix="FaultTree" basePackage="de.fzi.fta" disposableProviderFactory="true"
+      ecorePackage="FaultTree.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="FaultTree.ecore#//GateType">
+      <genEnumLiterals ecoreEnumLiteral="FaultTree.ecore#//GateType/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="FaultTree.ecore#//GateType/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="FaultTree.ecore#//GateType/XOR"/>
+      <genEnumLiterals ecoreEnumLiteral="FaultTree.ecore#//GateType/PAND"/>
+      <genEnumLiterals ecoreEnumLiteral="FaultTree.ecore#//GateType/INHIBIT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="FaultTree.ecore#//PrimaryEventType">
+      <genEnumLiterals ecoreEnumLiteral="FaultTree.ecore#//PrimaryEventType/BASIC"/>
+      <genEnumLiterals ecoreEnumLiteral="FaultTree.ecore#//PrimaryEventType/UNDEVELOPED"/>
+      <genEnumLiterals ecoreEnumLiteral="FaultTree.ecore#//PrimaryEventType/EXTERNAL"/>
+    </genEnums>
+    <genClasses ecoreClass="FaultTree.ecore#//FaultTree">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//FaultTree/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FaultTree.ecore#//FaultTree/gates"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FaultTree.ecore#//FaultTree/events"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FaultTree.ecore#//FaultTree/intermediateEvents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FaultTree.ecore#//FaultTree/primaryEvents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FaultTree.ecore#//FaultTree/conditioningEvents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FaultTree.ecore#//FaultTree/transferOut"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FaultTree.ecore#//FaultTree/transferIns"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FaultTree.ecore#//FaultTree/topEvent"/>
+    </genClasses>
+    <genClasses ecoreClass="FaultTree.ecore#//Gate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//Gate/inputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//Gate/output"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference FaultTree.ecore#//Gate/faultTree"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//Gate/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//Gate/type"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//Gate/probability"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="FaultTree.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//Event/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//Event/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//Event/topGates"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FaultTree.ecore#//Event/faultTree"/>
+    </genClasses>
+    <genClasses ecoreClass="FaultTree.ecore#//IntermediateEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//IntermediateEvent/bottomGate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//IntermediateEvent/topEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//IntermediateEvent/bottomEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//IntermediateEvent/transferIn"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//IntermediateEvent/transferOut"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//IntermediateEvent/probability"/>
+    </genClasses>
+    <genClasses ecoreClass="FaultTree.ecore#//PrimaryEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//PrimaryEvent/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//PrimaryEvent/probability"/>
+    </genClasses>
+    <genClasses ecoreClass="FaultTree.ecore#//ConditioningEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//ConditioningEvent/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="FaultTree.ecore#//TransferIn">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//TransferIn/event"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference FaultTree.ecore#//TransferIn/faultTree"/>
+    </genClasses>
+    <genClasses ecoreClass="FaultTree.ecore#//TransferOut">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FaultTree.ecore#//TransferOut/event"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference FaultTree.ecore#//TransferOut/faultTree"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="FaultTree.ecore#//Transfer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FaultTree.ecore#//Transfer/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
